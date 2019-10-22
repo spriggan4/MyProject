@@ -1,0 +1,171 @@
+fileFormatVersion: 2
+guid: ba7b955ad3634e545bba9bd86a88179f
+ModelImporter:
+  serializedVersion: 22
+  fileIDToRecycleName:
+    100000: Rig
+    100002: RigLBtmWing1
+    100004: RigLBtmWing2
+    100006: RigLBtmWing3
+    100008: RigLBtmWing4
+    100010: RigLBtmWing5
+    100012: RigLBtmWing6
+    100014: RigLMidWing1
+    100016: RigLMidWing2
+    100018: RigLMidWing3
+    100020: RigLMidWing4
+    100022: RigLMidWing5
+    100024: RigLMidWing6
+    100026: RigLUpWing1
+    100028: RigLUpWing2
+    100030: RigLUpWing3
+    100032: RigLUpWing4
+    100034: RigLUpWing5
+    100036: RigLUpWing6
+    100038: RigMain
+    100040: RigRBtmWing1
+    100042: RigRBtmWing2
+    100044: RigRBtmWing3
+    100046: RigRBtmWing4
+    100048: RigRBtmWing5
+    100050: RigRBtmWing6
+    100052: RigRMidWing1
+    100054: RigRMidWing2
+    100056: RigRMidWing3
+    100058: RigRMidWing4
+    100060: RigRMidWing5
+    100062: RigRMidWing6
+    100064: RigRUpWing1
+    100066: RigRUpWing2
+    100068: RigRUpWing3
+    100070: RigRUpWing4
+    100072: RigRUpWing5
+    100074: RigRUpWing6
+    100076: //RootNode
+    100078: Wings 11
+    400000: Rig
+    400002: RigLBtmWing1
+    400004: RigLBtmWing2
+    400006: RigLBtmWing3
+    400008: RigLBtmWing4
+    400010: RigLBtmWing5
+    400012: RigLBtmWing6
+    400014: RigLMidWing1
+    400016: RigLMidWing2
+    400018: RigLMidWing3
+    400020: RigLMidWing4
+    400022: RigLMidWing5
+    400024: RigLMidWing6
+    400026: RigLUpWing1
+    400028: RigLUpWing2
+    400030: RigLUpWing3
+    400032: RigLUpWing4
+    400034: RigLUpWing5
+    400036: RigLUpWing6
+    400038: RigMain
+    400040: RigRBtmWing1
+    400042: RigRBtmWing2
+    400044: RigRBtmWing3
+    400046: RigRBtmWing4
+    400048: RigRBtmWing5
+    400050: RigRBtmWing6
+    400052: RigRMidWing1
+    400054: RigRMidWing2
+    400056: RigRMidWing3
+    400058: RigRMidWing4
+    400060: RigRMidWing5
+    400062: RigRMidWing6
+    400064: RigRUpWing1
+    400066: RigRUpWing2
+    400068: RigRUpWing3
+    400070: RigRUpWing4
+    400072: RigRUpWing5
+    400074: RigRUpWing6
+    400076: Wings 11
+    400078: //RootNode
+    2100000: No Name
+    4300000: Wings 11
+    7400000: Take 001
+    9500000: //RootNode
+    13700000: Wings 11
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
