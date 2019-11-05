@@ -186,7 +186,8 @@ public class PlayerAtkMng : MonoBehaviour
     {
         isInTutorial = false;
         isSpecialAtking = false;
-        equippedWeapon.SetForNormalAtk();
+        //튜토리얼 매니져 스위치를 위해 넣었음. 매니져 스위치가 없다면 if문도 필요 없음.
+        if(equippedWeapon!=null) equippedWeapon.SetForNormalAtk();
     }
 
     private void WeaponAttack()
