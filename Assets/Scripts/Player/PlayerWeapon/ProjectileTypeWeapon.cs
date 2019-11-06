@@ -11,7 +11,7 @@ public class ProjectileTypeWeapon : Weapon
     private Transform objTr = null;
 
     [SerializeField]
-    private int usableCount = 5;
+    private int usableCount = 1;
 
     public override void SetForWeapon(Transform _objTr, bool _isSpecialAtking)
     {
