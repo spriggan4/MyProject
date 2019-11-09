@@ -111,7 +111,7 @@ ModelImporter:
     - serializedVersion: 16
       name: Right Throw
       takeName: Take 001
-      firstFrame: 0
+      firstFrame: 10
       lastFrame: 30
       wrapMode: 0
       orientationOffsetY: 0

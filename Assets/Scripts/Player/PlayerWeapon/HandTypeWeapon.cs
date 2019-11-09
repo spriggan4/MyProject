@@ -84,7 +84,8 @@ public class HandTypeWeapon : Weapon
         float[] tmpAngle = new float[] { this.objTr.rotation.eulerAngles.y - (weaponAngle / 2),
             this.objTr.rotation.eulerAngles.y + (weaponAngle / 2) };
 
-        weaponMeshObjCtrl.MakeFanShape(tmpAngle, attackRange);
+        //끝에 true는 노멀어택이 추가되면서 웨폰인지 노멀인지를 감별하기 위한 변수
+        weaponMeshObjCtrl.MakeFanShape(tmpAngle, attackRange, true);
 
         //설정만 해두고 끈 다음 Attack 함수 실행때만 잠시도록 켜지게 하기 위한 코드
         weaponMeshObjCtrl.gameObject.SetActive(false);
@@ -101,7 +102,8 @@ public class HandTypeWeapon : Weapon
         float[] tmpAngle = new float[] { this.objTr.rotation.eulerAngles.y - (weaponAngle / 2),
             this.objTr.rotation.eulerAngles.y + (weaponAngle / 2) };
 
-        weaponMeshObjCtrl.MakeFanShape(tmpAngle, attackRange * 2);
+        //끝에 true는 노멀어택이 추가되면서 웨폰인지 노멀인지를 감별하기 위한 변수
+        weaponMeshObjCtrl.MakeFanShape(tmpAngle, attackRange * 2, true);
         weaponMeshObjCtrl.gameObject.SetActive(false);
     }
 

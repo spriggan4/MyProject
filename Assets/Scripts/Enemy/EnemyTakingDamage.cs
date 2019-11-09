@@ -41,7 +41,8 @@ public class EnemyTakingDamage : MonoBehaviour
 
                 if (meshCtrl)
                 {
-                    weapon = meshCtrl.WeaponGameObject;
+                    if (meshCtrl.IsWeaponMesh)
+                        weapon = meshCtrl.WeaponGameObject;
                 }
                 else
                 {
@@ -55,7 +56,7 @@ public class EnemyTakingDamage : MonoBehaviour
                 Instantiate(ParticleMng.GetInstance().EffectBulletImpactWood(), newPos, tr.rotation);
                 Instantiate(ParticleMng.GetInstance().EffectBulletImpactMetal(), newPos, tr.rotation);
 
-                if (weapon.listSoundName.Capacity > 0)
+                if (meshCtrl.IsWeaponMesh && weapon.listSoundName.Capacity > 0)
                 {
                     int rand = Random.Range(0, weapon.listSoundName.Count);
                     AudioMng.GetInstance().PlaySound(weapon.listSoundName[rand], this.transform.position, 120f);
@@ -64,7 +65,8 @@ public class EnemyTakingDamage : MonoBehaviour
                 if (!isAttackedByWeapon && meshCtrl)
                 {
                     isAttackedByWeapon = true;
-                    weapon.SubtractDurability();
+                    if (meshCtrl.IsWeaponMesh)
+                        weapon.SubtractDurability();
                 }
 
                 // Combo
