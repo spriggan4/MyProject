@@ -8,15 +8,15 @@ Prefab:
     m_TransformParent: {fileID: 0}
     m_Modifications: []
     m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 0}
+  m_SourcePrefab: {fileID: 0}
   m_RootGameObject: {fileID: 1349810956855508}
-  m_IsPrefabParent: 1
+  m_IsPrefabAsset: 1
 --- !u!1 &1349810956855508
 GameObject:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 5
+  serializedVersion: 6
   m_Component:
   - component: {fileID: 4612818358436964}
   - component: {fileID: 114482857593431746}
@@ -32,7 +32,7 @@ GameObject:
 --- !u!4 &4612818358436964
 Transform:
   m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1349810956855508}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
@@ -45,7 +45,7 @@ Transform:
 --- !u!114 &114482857593431746
 MonoBehaviour:
   m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1349810956855508}
   m_Enabled: 1
@@ -56,7 +56,7 @@ MonoBehaviour:
 --- !u!114 &114622758827384646
 MonoBehaviour:
   m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1349810956855508}
   m_Enabled: 1
@@ -70,10 +70,11 @@ MonoBehaviour:
   slot3: {fileID: 0}
   slot4: {fileID: 0}
   slotMain: {fileID: 0}
+  defaultSprite: {fileID: 0}
 --- !u!114 &114679268422754132
 MonoBehaviour:
   m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1349810956855508}
   m_Enabled: 1
@@ -81,4 +82,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11a817735cc12fa448f5f0aab772db02, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemEmpty: {fileID: 1099638734758964, guid: 8571813afda665f4a9cadcb2e6b212b9, type: 2}
+  itemEmpty: {fileID: 0}

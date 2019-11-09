@@ -9,6 +9,7 @@ using UnityEngine.UI;
 public class PlayerAtkMng : MonoBehaviour
 {
     [SerializeField] private GameObject specialAtkUiText = null;
+
     private const float TEXT_UI_HEIGHT = 3f;//플레이어와 알림 텍스트의 거리
 
     private const float COMBO_NUM_MAKING_SPECIAL_ATK = 300f;//콤보는 최대치를 300으로 설정함.
@@ -17,16 +18,22 @@ public class PlayerAtkMng : MonoBehaviour
     private Animator playerAnim = null;
     private Weapon equippedWeapon = null;
     private ComboSystemMng comboSystemMng = null;
+    private PlayerStats playerStats = null;
     private RectTransform specialAtkUiTextRct = null;//조건이 충족되면 화면에 글자를 띄우기 위한 변수
     private Text textUi = null;//조건이 충족되면 화면에 글자를 띄우기 위한 변수
+    private NormalAtkCtrl normalAtkCtrl = null;//무기를 가지지 않을때 사용하는 메쉬를 조종하기 위한 변수
 
     private bool isEquippedWeapon = false;
-    private bool canUseSpecialAtk = false;//update에서 조건들이 충족되면 true 값 들어가고 playerController에서 'E'를 누르면 실행
+    private bool canUseSpecialAtk = false; //update에서 조건들이 충족되면 true 값 들어가고 playerController에서 'E'를 누르면 실행
     private bool isSpecialAtking = false;
-    private bool isInTutorial = true;//듀토리얼 상태에선 다르도록 만들기 위해 생성한 변수
 
-    [SerializeField] private float specialAtkMaintableTime = 0f;//스페셜 공격을 시작했을때 유지되는 시간
-    private float defaultSpecialAtkMaintableTime = 0f;
+    //19/11/09 normalAtkCtrl에서 Normal 어택 조작시키도록 변경해서 주석 처리함
+    //private bool isNormalAtking = false; //19/11/09 NormalAtk은 AtkMng 안에서만 동작시킬 계획이므로 변수 추가
+
+    private bool isInTutorial = true; //듀토리얼 상태에선 다르도록 만들기 위해 생성한 변수
+
+    //private float varForCheckNormalAtkTimeAfterNormalAtk = 0f;
+    private float elapsedMaintableTimeAfterSpecialAtk = 0f;
 
 
     public Weapon EquippedWeapon
@@ -82,7 +89,19 @@ public class PlayerAtkMng : MonoBehaviour
             Debug.LogError("PlayerAtkMng의 comboSystemMng is null");
         }
 
-        defaultSpecialAtkMaintableTime = specialAtkMaintableTime;
+        playerStats = this.gameObject.GetComponent<PlayerStats>();
+        if (!playerStats)
+        {
+            Debug.LogError("playerAtkMng의 playerStats이 비었음");
+        }
+
+        normalAtkCtrl = this.gameObject.GetComponent<NormalAtkCtrl>();
+        if (!normalAtkCtrl)
+        {
+            Debug.LogError("playerAtkMng의 normalAtkCtrl이 비었음");
+        }
+
+        elapsedMaintableTimeAfterSpecialAtk = playerStats.SpecialAtkMaintableTime;
 
         if (!specialAtkUiText)
         {
@@ -96,6 +115,8 @@ public class PlayerAtkMng : MonoBehaviour
             specialAtkUiTextRct = specialAtkUiText.GetComponent<RectTransform>();
         }
         specialAtkUiText.gameObject.SetActive(false);
+
+        normalAtkCtrl.SetNormalAtk(playerStats.Damage, playerStats.NormalAtkSpeed);
     }
 
     private void Update()
@@ -154,10 +175,35 @@ public class PlayerAtkMng : MonoBehaviour
 
     public void Attack()
     {
-
         if (isEquippedWeapon)
         {
             equippedWeapon.Attack(playerAnim);
+        }
+
+        else
+        {
+            normalAtkCtrl.Attack(playerAnim);
+            //19/11/09 normalAtkCtrl에서 Normal 어택 조작시키도록 변경해서 주석 처리함
+            //if (!isNormalAtking)
+            //{
+            //    isNormalAtking=true;
+            //    varForCheckNormalAtkTimeAfterNormalAtk = playerStats.NormalAtkSpeed;
+            //    playerAnim.SetTrigger("NormalAtk");
+            //    StartCoroutine(CheckNormalAtkTiemAfterUse());
+
+            //    switch (Random.Range(0, 2))
+            //    {
+            //        case 0:
+            //            AudioMng.GetInstance().PlaySound("AttackSound_1", objTr.position, 100f);
+            //            break;
+            //        case 1:
+            //            AudioMng.GetInstance().PlaySound("AttackSound_2", objTr.position, 100f);
+            //            break;
+            //        case 2:
+            //            AudioMng.GetInstance().PlaySound("AttackSound_3", objTr.position, 100f);
+            //            break;
+            //    }
+            //}
         }
 
     }
@@ -172,7 +218,7 @@ public class PlayerAtkMng : MonoBehaviour
                 canUseSpecialAtk = false;
                 comboSystemMng.ComboTimer = false;
                 isSpecialAtking = true;
-                specialAtkMaintableTime = defaultSpecialAtkMaintableTime;
+                elapsedMaintableTimeAfterSpecialAtk = playerStats.SpecialAtkMaintableTime;
                 specialAtkUiText.gameObject.SetActive(false);
                 //튜토리얼 도중에는 SpecialGageNum가 떨어지지 않도록 만드는 코드
                 if (!isInTutorial)
@@ -187,7 +233,7 @@ public class PlayerAtkMng : MonoBehaviour
         isInTutorial = false;
         isSpecialAtking = false;
         //튜토리얼 매니져 스위치를 위해 넣었음. 매니져 스위치가 없다면 if문도 필요 없음.
-        if(equippedWeapon!=null) equippedWeapon.SetForNormalAtk();
+        if (equippedWeapon != null) equippedWeapon.SetForNormalAtk();
     }
 
     private void WeaponAttack()
@@ -197,9 +243,9 @@ public class PlayerAtkMng : MonoBehaviour
 
     private IEnumerator SpecialAtkMaintableTimeAfterSpecialAtkUse()
     {
-        while (specialAtkMaintableTime > 0)
+        while (elapsedMaintableTimeAfterSpecialAtk > 0)
         {
-            specialAtkMaintableTime -= Time.deltaTime;
+            elapsedMaintableTimeAfterSpecialAtk -= Time.deltaTime;
             yield return null;
         }
         comboSystemMng.ComboTimer = true;
@@ -207,4 +253,16 @@ public class PlayerAtkMng : MonoBehaviour
         isSpecialAtking = false;
         equippedWeapon.SetForNormalAtk();
     }
+
+    //19/11/09 normalAtkCtrl에서 Normal 어택 조작시키도록 변경해서 주석 처리함
+    //private IEnumerator CheckNormalAtkTiemAfterUse()
+    //{
+    //    while (varForCheckNormalAtkTimeAfterNormalAtk > 0)
+    //    {
+    //        varForCheckNormalAtkTimeAfterNormalAtk -= Time.deltaTime;
+    //        yield return null;
+    //    }
+
+    //    isNormalAtking = false;
+    //}
 }

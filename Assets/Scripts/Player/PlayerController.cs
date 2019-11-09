@@ -14,7 +14,7 @@ public class PlayerController : MonoBehaviour
     private ChangePlayerModelMng changePlayerModelMng = null;
 
     private bool isAlive = true;
-    private bool isInputSwitch = false;
+    private bool canInputSwitch = false;
     private bool isInPassage = false;//통로 안에 있는지를 체크해서 카메라가 정면으로 응시하게 만들 변수
     private bool canChangeCamSettingWithDefault = false;//통로를 통과하면 카메라가 탑뷰로 바뀌게 만들 변수
     private bool hasChangedSpecialAtkModel = false;
@@ -35,15 +35,15 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    public bool IsInputSwitch
+    public bool CanInputSwitch
     {
         get
         {
-            return isInputSwitch;
+            return canInputSwitch;
         }
         set
         {
-            isInputSwitch = value;
+            canInputSwitch = value;
         }
     }
 
@@ -126,7 +126,7 @@ public class PlayerController : MonoBehaviour
                 playerAtkMng.SetSpecialAtk();
             }
 
-            if (isInputSwitch)
+            if (CanInputSwitch)
             {
                 AtkCtrl();
 
@@ -137,8 +137,8 @@ public class PlayerController : MonoBehaviour
                 Turning();
                 Animating(h, v);
             }
-
         }
+
         else
         {
             Die();

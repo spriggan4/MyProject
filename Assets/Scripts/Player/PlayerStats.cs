@@ -8,18 +8,25 @@ using UnityEngine;
 
 public class PlayerStats : MonoBehaviour {
 
-    [SerializeField]
-    private float atkSpeed = 0f;
-    [SerializeField]
-    private float movementSpeed = 0f;
-    [SerializeField]
-    private float resistance = 0f;//저항력
+    [SerializeField] private float normalAtkSpeed = 0f;
+    [SerializeField] private float damage = 0f;
+    [SerializeField] private float movementSpeed = 0f;
+    [SerializeField] private float resistance = 0f;//저항력
+    [SerializeField] private float specialAtkMaintableTime = 0f;//스페셜 공격을 시작했을때 유지되는 시간
 
-    public float AtkSpeed
+    public float NormalAtkSpeed
     {
         get
         {
-            return atkSpeed;
+            return normalAtkSpeed;
+        }
+    }
+
+    public float Damage
+    {
+        get
+        {
+            return damage;
         }
     }
 
@@ -36,6 +43,14 @@ public class PlayerStats : MonoBehaviour {
         get
         {
             return resistance;
+        }
+    }
+
+    public float SpecialAtkMaintableTime
+    {
+        get
+        {
+            return specialAtkMaintableTime;
         }
     }
 }

@@ -84,7 +84,7 @@ public class TutorialMng : MonoBehaviour
             if (tutorialTextMng.CountSentencesNum() == 11 && !isSetNeedDutorialThings)
             {
                 tutorialTextMng.TextButtonOff();
-                playerController.IsInputSwitch = true;
+                playerController.CanInputSwitch = true;
                 isSetNeedDutorialThings = true;
             }
 
@@ -168,7 +168,7 @@ public class TutorialMng : MonoBehaviour
         else
         {
             tutorialTextMng.TextButtonOff();
-            playerController.IsInputSwitch = true;
+            playerController.CanInputSwitch = true;
             comboSystemMng.ComboTimer = true;
             comboSystemMng.IsInTutorial = false;
             //comboSystemMng.ResetSpecialAtkGageNum(); 왜 두번을 실행시켰지?

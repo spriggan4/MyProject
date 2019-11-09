@@ -88,6 +88,4 @@ public class GameMng : MonoBehaviour
         Menu();
         yield return null;
     }
-
-
 }

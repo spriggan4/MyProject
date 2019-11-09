@@ -45,7 +45,7 @@ public class KnockBackProcess : MonoBehaviour
             direction = other.transform.forward;
             elapsedTimeAfterKnockBack = 0;
             isKnockBackOn = true;
-            playerCtrl.IsInputSwitch = false;
+            playerCtrl.CanInputSwitch = false;
             animator.SetTrigger("TakeDamage");
             StartCoroutine(KnockBack());
         }
@@ -67,6 +67,6 @@ public class KnockBackProcess : MonoBehaviour
             yield return new WaitForFixedUpdate();
         }
         isKnockBackOn = false;
-        playerCtrl.IsInputSwitch = true;
+        playerCtrl.CanInputSwitch = true;
     }
 }
