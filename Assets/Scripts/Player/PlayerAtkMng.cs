@@ -24,7 +24,7 @@ public class PlayerAtkMng : MonoBehaviour
     private NormalAtkCtrl normalAtkCtrl = null;//무기를 가지지 않을때 사용하는 메쉬를 조종하기 위한 변수
 
     private bool isEquippedWeapon = false;
-    private bool hasNormalAtkMesh = false; //노멀어택 메쉬 컨트롤 파괴와 생성을 한번만 하기 위한 변수
+    //private bool hasNormalAtkMesh = false; //노멀어택 메쉬 컨트롤 파괴와 생성을 한번만 하기 위한 변수,Equipment에서 조절하면 될꺼 같아서 주석
     private bool canUseSpecialAtk = false; //update에서 조건들이 충족되면 true 값 들어가고 playerController에서 'E'를 누르면 실행
     private bool isSpecialAtking = false;
 
@@ -116,18 +116,14 @@ public class PlayerAtkMng : MonoBehaviour
             specialAtkUiTextRct = specialAtkUiText.GetComponent<RectTransform>();
         }
         specialAtkUiText.gameObject.SetActive(false);
+
+        SetForNormalAtk();
     }
 
     private void Update()
     {
         if (isEquippedWeapon)
         {
-            if (hasNormalAtkMesh)
-            {
-                normalAtkCtrl.DestoryWeaponMesh();
-                hasNormalAtkMesh = false;
-            }
-
             //조건에 따라 canUseSpecialAtk 변수에 ture 값이 들어가고 알림 텍스트를 띄우는 코드
             if (comboSystemMng.SpecialAtkGageNum >= COMBO_NUM_MAKING_SPECIAL_ATK &&
                 !canUseSpecialAtk && !isSpecialAtking)
@@ -171,20 +167,16 @@ public class PlayerAtkMng : MonoBehaviour
                 }
             }
         }
-
-        else
-        {
-            if (!hasNormalAtkMesh)
-            {
-                normalAtkCtrl.SetNormalAtk(playerStats.Damage, playerStats.NormalAtkSpeed);
-                hasNormalAtkMesh = true;
-            }
-        }
     }
 
-    public void SetForAtk()
+    public void SetForWeaponAtk()
     {
         equippedWeapon.SetForWeapon(this.gameObject.transform, isSpecialAtking);
+    }
+
+    public void SetForNormalAtk()
+    {
+        normalAtkCtrl.SetNormalAtk(playerStats.Damage, playerStats.NormalAtkSpeed);
     }
 
     public void Attack()
@@ -248,6 +240,21 @@ public class PlayerAtkMng : MonoBehaviour
         isSpecialAtking = false;
         //튜토리얼 매니져 스위치를 위해 넣었음. 매니져 스위치가 없다면 if문도 필요 없음.
         if (equippedWeapon != null) equippedWeapon.SetForNormalAtk();
+    }
+
+    public void StopNormalAtkMeshCouroutine()
+    {
+        normalAtkCtrl.StopNormalAtkMeshCouroutine();
+    }
+
+    public void DestroyNormalAtkMesh()
+    {
+        normalAtkCtrl.DestoryMesh();
+    }
+
+    public void StopNormalAtking()
+    {
+        normalAtkCtrl.StopNormalAtking();
     }
 
     private void WeaponAttack()

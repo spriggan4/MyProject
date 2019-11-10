@@ -26,6 +26,7 @@ public class Weapon : Item
     public virtual void Attack(Animator _objAnimator) { }
     public virtual void WeaponAttack() { }
     public virtual void StopAtking() { }
+    public virtual void StopWeaponMeshCouroutine() { }
     public virtual void SubtractDurability(){ }
     public virtual int DurabilityCur { get; set; }
     public virtual float WeaponAngle { get; set; }

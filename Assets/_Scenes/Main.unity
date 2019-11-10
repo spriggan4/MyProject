@@ -19965,6 +19965,11 @@ Prefab:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114334490687777414, guid: b86e5358337f47245bc6cb30e338080d,
+        type: 2}
+      propertyPath: usableCount
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b86e5358337f47245bc6cb30e338080d, type: 2}
   m_IsPrefabAsset: 0
@@ -22857,6 +22862,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f6aeb1b1a318874092e0447b21e3765, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  listSoundName: []
   atkMeshObj: {fileID: 1256511811141824, guid: abe7a15ffd1caff449f0ad48d074e4e7, type: 2}
   atkStartDist: 0
   attackRange: 3

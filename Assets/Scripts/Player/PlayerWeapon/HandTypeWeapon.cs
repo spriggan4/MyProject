@@ -11,6 +11,7 @@ public class HandTypeWeapon : Weapon
 
     private Transform objTr = null;
     private WeaponMeshCtrl weaponMeshObjCtrl = null;
+    private IEnumerator MeshCouroutine = null;
 
     public float atkStartDist = 0f; //공격이 시작하는 플레이어와의 거리
     public float attackRange = 0f; //공격 사정거리
@@ -53,6 +54,8 @@ public class HandTypeWeapon : Weapon
         {
             Debug.LogError("웨폰메쉬컨트롤 Null");
         }
+
+        MeshCouroutine = MeshActivation();
 
         if (!base.isSpecialAtking)
         {
@@ -136,12 +139,17 @@ public class HandTypeWeapon : Weapon
 
     public override void WeaponAttack()
     {
-        StartCoroutine(MeshActivation());
+        StartCoroutine(MeshCouroutine);
     }
 
     public override void StopAtking()
     {
         isAtking = false;
+    }
+
+    public override void StopWeaponMeshCouroutine()
+    {
+        StopCoroutine(MeshCouroutine);
     }
 
     public override void SubtractDurability()

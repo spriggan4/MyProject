@@ -13,14 +13,25 @@ public class WeaponMeshCtrl : NeedWeaponThingsForSystem
     private MeshCollider meshCollider = null;
 
     private bool isInitializationSuccess = false;
+    private bool isWeaponMesh = false;
+
+    public bool IsWeaponMesh
+    {
+        get
+        {
+            return isWeaponMesh;
+        }
+    }
 
     public void DestroyWeaponMesh()
     {
         Destroy(this.gameObject);
     }
 
-    public void MakeFanShape(float[] angle, float atkRangeDist)
+    public void MakeFanShape(float[] angle, float atkRangeDist,bool _isWeaponMesh)
     {
+        isWeaponMesh = _isWeaponMesh;
+
         Initialization();
 
         float startAngle; //원의 시작 각도.
