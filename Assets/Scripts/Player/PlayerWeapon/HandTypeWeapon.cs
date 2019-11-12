@@ -139,7 +139,7 @@ public class HandTypeWeapon : Weapon
 
     public override void WeaponAttack()
     {
-        StartCoroutine(MeshCouroutine);
+        StartCoroutine(MeshActivation());
     }
 
     public override void StopAtking()

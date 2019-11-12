@@ -59,6 +59,9 @@ public class NormalAtkCtrl : MonoBehaviour
 
     public void Attack(Animator _objAnimator)
     {
+        Debug.Log("isNormalAtking = " + isNormalAtking);
+        //Debug.Log("waitingTimeForAtk = " + waitingTimeForAtk);
+        //Debug.Log("elapsedTimeAfterAtk = " + elapsedTimeAfterAtk);
         //isAtking은 코루틴에서 시간 계산 후 false값이 들어가도록 설정.
         if (!isNormalAtking)
         {
@@ -77,6 +80,7 @@ public class NormalAtkCtrl : MonoBehaviour
                     break;
             }
             elapsedTimeAfterAtk = 0.0f;
+
             isNormalAtking = true;
 
             //애니 이벤트로 NormalAttack 실행
@@ -86,7 +90,8 @@ public class NormalAtkCtrl : MonoBehaviour
 
     public void NormalAttack()
     {
-        StartCoroutine(MeshCouroutine);
+        StartCoroutine(MeshActivation());
+        Debug.Log("NormalAtk 실행");
     }
 
     public void StopNormalAtking()
@@ -127,6 +132,7 @@ public class NormalAtkCtrl : MonoBehaviour
             }
             yield return new WaitForFixedUpdate();
         }
+        Debug.Log("메쉬 while 다음 실행");
         isNormalAtking = false;
     }
 }
