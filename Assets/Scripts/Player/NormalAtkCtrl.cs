@@ -40,8 +40,6 @@ public class NormalAtkCtrl : MonoBehaviour
             Debug.LogError("웨폰메쉬컨트롤 Null");
         }
 
-        MeshCouroutine = MeshActivation();
-
         //아래로는 웨폰 메쉬 크기를 설정하는 코드
         objRotY_AtFirst = objTr.transform.rotation.eulerAngles.y;
 
@@ -94,14 +92,12 @@ public class NormalAtkCtrl : MonoBehaviour
         Debug.Log("NormalAtk 실행");
     }
 
-    public void StopNormalAtking()
+    public void DestoryEverythingForNormalAtk()
     {
-        isNormalAtking = false;
-    }
-
-    public void StopNormalAtkMeshCouroutine()
-    {
+        MeshCouroutine = MeshActivation();
         StopCoroutine(MeshCouroutine);
+        isNormalAtking = false;
+        normalAtkMeshObjCtrl.DestroyWeaponMesh();
     }
 
     public void DestoryMesh()

@@ -42,9 +42,7 @@ public class Equipment : MonoBehaviour
             if (equippedItem != null)
             {
                 //normalAtk 메쉬 파괴
-                playerAtkMng.StopNormalAtkMeshCouroutine();
-                playerAtkMng.DestroyNormalAtkMesh();
-                playerAtkMng.StopNormalAtking();
+                playerAtkMng.DestoryEverythingForNormalAtk();                
 
                 playerAtkMng.EquippedWeapon = equippedItem;   
                 playerAtkMng.IsEquippedWeapon = isEquipWeapon;
@@ -64,9 +62,7 @@ public class Equipment : MonoBehaviour
                 playerAtkMng.IsEquippedWeapon = isEquipWeapon;
                 
                 equippedItem.gameObject.SetActive(false);
-                equippedItem.StopWeaponMeshCouroutine();
-                equippedItem.DestoryWeaponMesh();
-                equippedItem.StopAtking();
+                equippedItem.DestoryEverythingForWeaponAtk();
 
                 playerAtkMng.SetForNormalAtk();
                 return equippedItem;

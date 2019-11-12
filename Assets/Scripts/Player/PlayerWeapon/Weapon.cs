@@ -19,14 +19,12 @@ public class Weapon : Item
     protected bool canAttack = false;
     protected bool isSpecialAtking = false;
 
-    public virtual void DestoryWeaponMesh() { }
+    public virtual void DestoryEverythingForWeaponAtk() { }
     public virtual void SetForWeapon(Transform _objTr, bool _isSpecialAtking) { }
     public virtual void SetForNormalAtk() { }
     public virtual void SetForSpecialAtk() { }
     public virtual void Attack(Animator _objAnimator) { }
     public virtual void WeaponAttack() { }
-    public virtual void StopAtking() { }
-    public virtual void StopWeaponMeshCouroutine() { }
     public virtual void SubtractDurability(){ }
     public virtual int DurabilityCur { get; set; }
     public virtual float WeaponAngle { get; set; }

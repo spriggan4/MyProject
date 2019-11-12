@@ -242,19 +242,9 @@ public class PlayerAtkMng : MonoBehaviour
         if (equippedWeapon != null) equippedWeapon.SetForNormalAtk();
     }
 
-    public void StopNormalAtkMeshCouroutine()
+    public void DestoryEverythingForNormalAtk()
     {
-        normalAtkCtrl.StopNormalAtkMeshCouroutine();
-    }
-
-    public void DestroyNormalAtkMesh()
-    {
-        normalAtkCtrl.DestoryMesh();
-    }
-
-    public void StopNormalAtking()
-    {
-        normalAtkCtrl.StopNormalAtking();
+        normalAtkCtrl.DestoryEverythingForNormalAtk();
     }
 
     private void WeaponAttack()

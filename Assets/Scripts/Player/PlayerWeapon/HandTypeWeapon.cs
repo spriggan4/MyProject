@@ -37,12 +37,6 @@ public class HandTypeWeapon : Weapon
         durabilityCur = durabilityMax; ;
     }
 
-    public override void DestoryWeaponMesh()
-    {
-        this.objTr = null;
-        weaponMeshObjCtrl.DestroyWeaponMesh();
-    }
-
     public override void SetForWeapon(Transform _objTr, bool _isSpecialAtking)
     {
         this.objTr = _objTr;
@@ -54,8 +48,6 @@ public class HandTypeWeapon : Weapon
         {
             Debug.LogError("웨폰메쉬컨트롤 Null");
         }
-
-        MeshCouroutine = MeshActivation();
 
         if (!base.isSpecialAtking)
         {
@@ -142,14 +134,13 @@ public class HandTypeWeapon : Weapon
         StartCoroutine(MeshActivation());
     }
 
-    public override void StopAtking()
+    public override void DestoryEverythingForWeaponAtk()
     {
-        isAtking = false;
-    }
-
-    public override void StopWeaponMeshCouroutine()
-    {
+        MeshCouroutine = MeshActivation();
         StopCoroutine(MeshCouroutine);
+        isAtking = false;
+        this.objTr = null;
+        weaponMeshObjCtrl.DestroyWeaponMesh();
     }
 
     public override void SubtractDurability()
@@ -183,6 +174,6 @@ public class HandTypeWeapon : Weapon
             }
             yield return new WaitForFixedUpdate();
         }
-        StopAtking();
+        isAtking = false;
     }
 }

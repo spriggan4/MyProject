@@ -65,11 +65,6 @@ public class ProjectileTypeWeapon : Weapon
         StartCoroutine(Fire(weaponDamage));
     }
 
-    public override void StopAtking()
-    {
-        isAtking = false;
-    }
-
     private IEnumerator Fire(float _weaponDamage)
     {
         while (waitingTimeForAtk > elapsedTimeAfterAtk)
@@ -113,7 +108,7 @@ public class ProjectileTypeWeapon : Weapon
             }
             yield return new WaitForFixedUpdate();
         }
-        StopAtking();
+        isAtking = false;
     }
 
     private void SubtractUsableCount()
