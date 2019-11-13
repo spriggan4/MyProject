@@ -136,7 +136,10 @@ public class ComboSystemMng : MonoBehaviour
         {
             specialAtkGageNum = MAX_GAGE;
         }
+    }
 
+    public void Hit()
+    {
         ResetHpToDefault();
         hpMaintainableTimeAfterHit = defaultHpMaintainableTimeAfterHit;
         hasHit = true;
