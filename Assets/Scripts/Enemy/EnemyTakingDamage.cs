@@ -73,7 +73,6 @@ public class EnemyTakingDamage : MonoBehaviour
 
                     // Combo
                     ComboSystemMng.GetInstance().AddCombo(50f);
-                    ComboSystemMng.GetInstance().Hit();
 
                     // Taking Damage
                     objStat.TakeDamage(weaponDamage);
@@ -103,7 +102,8 @@ public class EnemyTakingDamage : MonoBehaviour
                         isAttacked = true;
                     }
 
-                    ComboSystemMng.GetInstance().Hit();
+                    // Combo
+                    ComboSystemMng.GetInstance().AddCombo(50f);
 
                     // Taking Damage
                     objStat.TakeDamage(weaponDamage);
